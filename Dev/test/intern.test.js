@@ -1,19 +1,39 @@
-const Intern = require("../lib/Intern");
+const Intern = require("../lib/intern");
 
-test("Can set school via constructor", () => {
-  const testValue = "School";
-  const e = new Intern("Foo", 1, "test@test.com", testValue);
-  expect(e.school).toBe(testValue);
-});
+describe("Intern", () => {
+  it("Should create an object with given parameters", () => {
+    const intern = new Intern("Grant", 1, "grant@gmail.com", "School");
+    expect(intern).toEqual({
+      _name: "Grant",
+      _id: 1,
+      _email: "grant@gmail.com",
+      _role: "Intern",
+      _school: "School",
+    });
+  });
 
-test('getRole() should return "Intern"', () => {
-  const testValue = "Intern";
-  const e = new Intern("Foo", 1, "test@test.com", "UCLA");
-  expect(e.getRole()).toBe(testValue);
-});
+  it("Should return name using getter", () => {
+    const intern = new Intern("Grant", 1, "grant@gmail.com", "School");
+    expect(intern.name).toEqual("Grant");
+  });
 
-test("Can get school via getSchool()", () => {
-  const testValue = "School";
-  const e = new Intern("Foo", 1, "test@test.com", testValue);
-  expect(e.getSchool()).toBe(testValue);
+  it("Should return id using getter", () => {
+    const intern = new Intern("Grant", 1, "grant@gmail.com", "School");
+    expect(intern.id).toEqual(1);
+  });
+
+  it("Should return email using getter", () => {
+    const intern = new Intern("Grant", 1, "grant@gmail.com", "School");
+    expect(intern.email).toEqual("grant@gmail.com");
+  });
+
+  it("Should return role using getter", () => {
+    const intern = new Intern("Grant", 1, "grant@gmail.com", "School");
+    expect(intern.role).toEqual("Intern");
+  });
+
+  it("Should return school using getter", () => {
+    const intern = new Intern("Grant", 1, "grant@gmail.com", "School");
+    expect(intern.school).toEqual("School");
+  });
 });

@@ -1,19 +1,39 @@
-const Manager = require("../lib/Manager");
+const Manager = require("../lib/manager");
 
-test("Can set office number via constructor argument", () => {
-  const testValue = 100;
-  const e = new Manager("Foo", 1, "test@test.com", testValue);
-  expect(e.officeNumber).toBe(testValue);
-});
+describe("Manager", () => {
+  it("Should create an object with given parameters", () => {
+    const manager = new Manager("Grant", 1, "grant@gmail.com", 123);
+    expect(manager).toEqual({
+      _name: "Grant",
+      _id: 1,
+      _email: "grant@gmail.com",
+      _role: "Manager",
+      _officeNumber: 123,
+    });
+  });
 
-test('getRole() should return "Manager"', () => {
-  const testValue = "Manager";
-  const e = new Manager("Foo", 1, "test@test.com", 100);
-  expect(e.getRole()).toBe(testValue);
-});
+  it("Should return name using getter", () => {
+    const manager = new Manager("Grant", 1, "grant@gmail.com", 123);
+    expect(manager.name).toEqual("Grant");
+  });
 
-test("Can get office number via getOffice()", () => {
-  const testValue = 100;
-  const e = new Manager("Foo", 1, "test@test.com", testValue);
-  expect(e.getOfficeNumber()).toBe(testValue);
+  it("Should return id using getter", () => {
+    const manager = new Manager("Grant", 1, "grant@gmail.com", 123);
+    expect(manager.id).toEqual(1);
+  });
+
+  it("Should return email using getter", () => {
+    const manager = new Manager("Grant", 1, "grant@gmail.com", 123);
+    expect(manager.email).toEqual("grant@gmail.com");
+  });
+
+  it("Should return role using getter", () => {
+    const manager = new Manager("Grant", 1, "grant@gmail.com", 123);
+    expect(manager.role).toEqual("Manager");
+  });
+
+  it("Should return office number using getter", () => {
+    const manager = new Manager("Grant", 1, "grant@gmail.com", 123);
+    expect(manager.officeNumber).toEqual(123);
+  });
 });
