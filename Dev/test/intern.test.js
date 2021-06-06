@@ -1,39 +1,20 @@
-const Intern = require("../lib/intern");
+const Intern = require("../lib/Intern.js");
 
-describe("Intern", () => {
-  it("Should create an object with given parameters", () => {
-    const intern = new Intern("Grant", 1, "grant@gmail.com", "School");
-    expect(intern).toEqual({
-      _name: "Grant",
-      _id: 1,
-      _email: "grant@gmail.com",
-      _role: "Intern",
-      _school: "School",
-    });
-  });
+test("creates an intern object", () => {
+  const intern = new Intern("New Guy", "0000", "new@guy.com", "College");
+  expect(intern.name).toBe("New Guy");
+  expect(intern.id).toBe("0000");
+  expect(intern.email).toBe("new@guy.com");
+  expect(intern.school).toBe("College");
+});
 
-  it("Should return name using getter", () => {
-    const intern = new Intern("Grant", 1, "grant@gmail.com", "School");
-    expect(intern.name).toEqual("Grant");
-  });
+test("gets intern's school", () => {
+  const intern = new Intern("New Guy", "0000", "new@guy.com", "College");
+  expect(intern.getSchool()).toEqual(expect.stringContaining("College"));
+});
 
-  it("Should return id using getter", () => {
-    const intern = new Intern("Grant", 1, "grant@gmail.com", "School");
-    expect(intern.id).toEqual(1);
-  });
+test("gets intern's role", () => {
+  const intern = new Intern("New Guy", "0000", "new@guy.com", "College");
 
-  it("Should return email using getter", () => {
-    const intern = new Intern("Grant", 1, "grant@gmail.com", "School");
-    expect(intern.email).toEqual("grant@gmail.com");
-  });
-
-  it("Should return role using getter", () => {
-    const intern = new Intern("Grant", 1, "grant@gmail.com", "School");
-    expect(intern.role).toEqual("Intern");
-  });
-
-  it("Should return school using getter", () => {
-    const intern = new Intern("Grant", 1, "grant@gmail.com", "School");
-    expect(intern.school).toEqual("School");
-  });
+  expect(intern.getRole()).toEqual(expect.stringContaining("Intern"));
 });

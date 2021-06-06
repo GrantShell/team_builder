@@ -1,33 +1,32 @@
-const Employee = require("../lib/employee");
+const Employee = require('../lib/Employee.js');
 
-describe("Employee", () => {
-  it("Should create an object with given parameters", () => {
-    const employee = new Employee("Grant", 1, "grant@gmail.com");
-    expect(employee).toEqual({
-      _name: "Grant",
-      _id: 1,
-      _email: "grant@gmail.com",
-      _role: "Employee",
-    });
-  });
+test('creates an employee object', () => {
+    const employee = new Employee('John Smith', '1234', 'john@john.com');
 
-  it("Should return name using getter", () => {
-    const employee = new Employee("Grant", 1, "grant@gmail.com");
-    expect(employee.name).toEqual("Grant");
-  });
-
-  it("Should return id using getter", () => {
-    const employee = new Employee("Grant", 1, "grant@gmail.com");
-    expect(employee.id).toEqual(1);
-  });
-
-  it("Should return email using getter", () => {
-    const employee = new Employee("Grant", 1, "grant@gmail.com");
-    expect(employee.email).toEqual("dave@gmail.com");
-  });
-
-  it("Should return role using getter", () => {
-    const employee = new Employee("Grant", 1, "grant@gmail.com");
-    expect(employee.role).toEqual("Employee");
-  });
+    expect(employee.name).toBe('John Smith');
+    expect(employee.id).toBe('1234');
+    expect(employee.email).toBe('john@john.com');
 });
+
+test("gets employee's name", () => {
+    const employee = new Employee('John Smith', '1234', 'john@john.com');
+
+    expect(employee.getName()).toEqual(expect.stringContaining('John Smith'));
+});
+
+test("gets employee's ID", () => {
+    const employee = new Employee('John Smith', '1234', 'john@john.com');
+
+    expect(employee.getId()).toEqual(expect.stringContaining('1234'));
+});
+
+test("gets employee's email", () => {
+    const employee = new Employee('John Smith', '1234', 'john@john.com');
+
+    expect(employee.getEmail()).toEqual(expect.stringContaining('john@john.com'));
+});
+
+test("gets employee's role", () => {
+    const employee = new Employee('John Smith', '1234', 'john@john.com');
+
+    expect(employee.getRole()).toEqual(expect.stringContaining('Employee'));

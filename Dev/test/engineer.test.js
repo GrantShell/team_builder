@@ -1,70 +1,37 @@
-const Engineer = require("../lib/engineer");
+const Engineer = require("../lib/Engineer.js");
 
-// Engineer Class / Construtor Jest test
-describe("Engineer", () => {
-  it("Should create an object with given parameters", () => {
-    const engineer = new Engineer(
-      "Grant",
-      1,
-      "grant@gmail.com",
-      "grantsgithub"
-    );
-    expect(engineer).toEqual({
-      _name: "Grant",
-      _id: 1,
-      _email: "grant@gmail.com",
-      _role: "Engineer",
-      _github: "grantsgithub",
-    });
-  });
+test("creates an engineer object", () => {
+  const engineer = new Engineer(
+    "Bob Ross",
+    "7410",
+    "bob@bob.com",
+    "bobrossgit"
+  );
 
-  it("Should return name using getter", () => {
-    const engineer = new Engineer(
-      "Grant",
-      1,
-      "grant@gmail.com",
-      "grantsgithub"
-    );
-    expect(engineer.name).toEqual("Grant");
-  });
+  expect(engineer.name).toBe("Bob Ross");
+  expect(engineer.id).toBe("7410");
+  expect(engineer.email).toBe("bob@bob.com");
+  expect(engineer.github).toBe("bobrossgit");
+});
 
-  it("Should return id using getter", () => {
-    const engineer = new Engineer(
-      "Grant",
-      1,
-      "grant@gmail.com",
-      "grantsgithub"
-    );
-    expect(engineer.id).toEqual(1);
-  });
+test("gets engineer's github username", () => {
+  const engineer = new Engineer(
+    "Bob Ross",
+    "7410",
+    "bob@bob.com",
+    "bobrossgit"
+  );
 
-  it("Should return email using getter", () => {
-    const engineer = new Engineer(
-      "Grant",
-      1,
-      "grant@gmail.com",
-      "grantsgithub"
-    );
-    expect(engineer.email).toEqual("dave@gmail.com");
-  });
+  expect(engineer.getGithub()).toEqual(expect.stringContaining("bobrossgit"));
+});
 
-  it("Should return role using getter", () => {
-    const engineer = new Engineer(
-      "Grant",
-      1,
-      "grant@gmail.com",
-      "grantsgithub"
-    );
-    expect(engineer.role).toEqual("Engineer");
-  });
+test("gets engineer's role", () => {
+  const engineer = new Engineer(
+    "Bob Ross",
+    "7410",
+    "bob@bob.com",
+    "bobrossgit"
+  );
 
-  it("Should return github using getter", () => {
-    const engineer = new Engineer(
-      "Grant",
-      1,
-      "grant@gmail.com",
-      "grantsgithub"
-    );
-    expect(engineer.github).toEqual("grantsgithub");
-  });
+  expect(engineer.getRole()).toEqual(expect.stringContaining("Engineer"));
 });
