@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/GrantShell/team_builder/issues"
   },
-  "homepage": "https://github.com/GrantShell/team_builder#readme"
+  "homepage": "https://github.com/GrantShell/team_builder#readme",
+  "dependencies": {
+    "inquirer": "^8.1.0"
+  }
 }
